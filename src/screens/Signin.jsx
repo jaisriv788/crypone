@@ -159,7 +159,7 @@ export default function Signin() {
               <p className="text-sm text-gray-600">
                 Don't have an account?{" "}
                 <a
-                  href="/signup"
+                  onClick={() => navigate("/signup")}
                   className="font-semibold hover:underline transition-all duration-200"
                   style={{ color: "#09182C" }}
                 >
