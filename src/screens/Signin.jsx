@@ -160,7 +160,7 @@ export default function Signin() {
                 Don't have an account?{" "}
                 <a
                   onClick={() => navigate("/signup")}
-                  className="font-semibold hover:underline transition-all duration-200"
+                  className="font-semibold cursor-pointer hover:underline transition-all duration-200"
                   style={{ color: "#09182C" }}
                 >
                   Sign up now
