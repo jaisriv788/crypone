@@ -24,15 +24,19 @@ export default function Signin() {
       password,
     });
 
-    // console.log(response.data.user);
+    console.log("ites me ", response.data.user);
 
     if (response.data.status == 200) {
       const data = {
         username,
         id: response.data.user.id,
+        sponsorId: response.data.user.sponsor_id,
         accountStatus: response.data.user.status,
         name: response.data.user.first_name,
         email: response.data.user.email,
+        activePackage: response.data.user.package_id,
+        wallet_address: response.data.user.wallet_address,
+        registrationData: response.data.user.created_at,
       };
       dispatch(signin(data));
       sessionStorage.setItem("isSignedIn", true);
@@ -60,7 +64,7 @@ export default function Signin() {
             <div className="bg-white rounded-full p-3 mr-3">
               <TrendingUp className="h-8 w-8" style={{ color: "#09182C" }} />
             </div>
-            <h1 className="text-3xl font-bold text-white">ProjectName</h1>
+            <h1 className="text-3xl font-bold text-white">EmirROI</h1>
           </div>
           <p className="text-gray-300">Your Gateway to Crypto Success</p>
         </div>
@@ -74,7 +78,7 @@ export default function Signin() {
               Welcome Back
             </h2>
             <p className="text-center text-gray-600">
-              Sign in to your ProjectName account
+              Sign in to your EmirROI account
             </p>
           </div>
 
@@ -172,7 +176,7 @@ export default function Signin() {
 
         <div className="text-center mt-8">
           <p className="text-xs text-gray-400">
-            © 2025 ProjectName. All rights reserved.
+            © 2025 EmirROI. All rights reserved.
           </p>
         </div>
       </div>

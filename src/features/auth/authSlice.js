@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   isAuthenticated: null,
-  baseurl:"https://worldofsoftware.in/rpro"
+  baseurl:"https://worldofsoftware.in/rpro/rpro_backend"
 };
 
 const authSlice = createSlice({

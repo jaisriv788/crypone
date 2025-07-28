@@ -1,7 +1,6 @@
 import {
   LogOut,
   Home,
-  DollarSign,
   Users,
   HelpCircle,
   CloudUpload,

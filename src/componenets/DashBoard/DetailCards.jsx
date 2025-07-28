@@ -17,19 +17,29 @@ function DetailCards({ user, binary, wallet }) {
       col: "border-indigo-300",
     },
     {
-      name: "Referal Bonus",
-      value: `$ ${wallet.referral_wallet.toFixed(2)}`,
+      name: "Today's Left Business",
+      value: `$ ${binary.today_left_business.toFixed(2)}`,
       col: "border-indigo-300",
     },
     {
-      name: "Daily Passive Bonus",
-      value: `$ ${wallet.passive_wallet.toFixed(2)}`,
+      name: "Today's Right Business",
+      value: `$ ${binary.today_right_business.toFixed(2)}`,
       col: "border-indigo-300",
     },
+    {
+      name: "Referal Bonus",
+      value: `$ ${wallet.referral_wallet.toFixed(2)}`,
+      col: "border-gray-300",
+    },
+    // {
+    //   name: "Daily Passive Bonus",
+    //   value: `$ ${wallet.passive_wallet.toFixed(2)}`,
+    //   col: "border-indigo-300",
+    // },
     {
       name: "Mile Stone Bonus",
       value: `$ ${Number(wallet.royalty_wallet).toFixed(2)}`,
-      col: "border-indigo-300",
+      col: "border-gray-400",
     },
     {
       name: "Matching Bonus",
@@ -47,33 +57,18 @@ function DetailCards({ user, binary, wallet }) {
       col: "border-gray-400",
     },
     {
-      name: "Deposite Wallet Bonus",
-      value: `$ ${wallet.deposit_wallet.toFixed(2)}`,
+      name: "Total Earning",
+      value: `$ ${parseFloat(wallet.total_earning).toFixed(2)}`,
       col: "border-gray-400",
     },
+    // {
+    //   name: "Deposite Wallet Bonus",
+    //   value: `$ ${wallet.deposit_wallet.toFixed(2)}`,
+    //   col: "border-gray-400",
+    // },
   ];
   return (
     <div className="grid grid-wrap md:grid-cols-2 gap-4 lg:gap-x-10 gap-y-4">
-      <div className="bg-white cursor-pointer text-gray-800 px-7 py-4 border-l-4 border-t-1 border-gray-400 rounded-2xl shadow-xl transition-transform hover:scale-[1.01]">
-        <div>
-          <span className="text-sm font-semibold">Username: </span>
-          <span className="text-sm text-gray-600">{user?.username}</span>
-        </div>
-        <div>
-          <span className="text-sm font-semibold">Name: </span>
-          <span className="text-sm text-gray-600">{user?.first_name}</span>
-        </div>
-        <div>
-          <span className="text-sm font-semibold">Email: </span>
-          <span className="text-sm text-gray-600">{user?.email}</span>
-        </div>
-        <div>
-          <span className="text-sm font-semibold">Registration Date: </span>
-          <span className="text-sm text-gray-600">
-            {user?.created_at.slice(0, 10).split("-").reverse().join("-")}
-          </span>
-        </div>
-      </div>
       {cardData.map((item, index) => {
         return (
           <div
@@ -83,7 +78,13 @@ function DetailCards({ user, binary, wallet }) {
             <div className="px-6 py-3 border-b border-gray-200 text-base font-semibold tracking-wide bg-gray-50 rounded-t-2xl">
               {item.name}
             </div>
-            <div className="px-6 py-5 text-2xl font-bold ">{item.value}</div>
+            <div
+              className={`px-6 py-5 ${
+                item.text ? "text-sm font-semibold" : "text-2xl font-bold"
+              } `}
+            >
+              {item.value}
+            </div>
           </div>
         );
       })}

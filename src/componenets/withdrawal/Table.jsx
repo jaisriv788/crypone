@@ -19,7 +19,7 @@ function Table({ debounceValue }) {
 
       const response = await axios.post(`${baseurl}/api/withdraw`, { user_id });
       setData(response.data.data);
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setLoading(false);
     };
 
@@ -50,7 +50,7 @@ function Table({ debounceValue }) {
 
   if (loading || !data) {
     return (
-      <div className="fixed flex justify-center items-center w-full h-full bg-black/70 back top-0 left-0 z-50">
+      <div className="fixed flex justify-center items-center w-full h-full bg-black/70 backdrop-blur-sm top-0 left-0 z-50">
         <div className="loading loading-spinner text-white loading-xl"></div>
       </div>
     );

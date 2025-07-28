@@ -1,4 +1,13 @@
+import { useEffect, useState } from "react";
+
 function Modal({ toggleModel, details, getDetails }) {
+  const [showMessage, setShowMessage] = useState(true);
+
+  useEffect(() => {
+    const showTreeMessage = localStorage.getItem("tree");
+    setShowMessage(showTreeMessage === "true");
+  }, []);
+
   return (
     <div
       onClick={() => toggleModel(false)}
@@ -12,10 +21,17 @@ function Modal({ toggleModel, details, getDetails }) {
           Account Details
         </div>
 
-        <div className="bg-yellow-100 border-l-4 border-yellow-500 p-3 rounded-md text-sm text-yellow-800">
-          <strong>Important:</strong> These details will only be shown once.
-          Please save them securely for future reference.
-        </div>
+        {showMessage ? (
+          <div className="bg-yellow-100 border-l-4 border-yellow-500 p-3 rounded-md text-sm text-yellow-800">
+            <strong>Important:</strong> Share these credentials with your
+            referral. They can change the password after login.
+          </div>
+        ) : (
+          <div className="bg-yellow-100 border-l-4 border-yellow-500 p-3 rounded-md text-sm text-yellow-800">
+            <strong>Important:</strong> These details will only be shown once.
+            Please save them securely for future reference.
+          </div>
+        )}
 
         <div className="space-y-2 text-base">
           <div>
@@ -33,6 +49,7 @@ function Modal({ toggleModel, details, getDetails }) {
             onClick={() => {
               toggleModel(false);
               getDetails(null);
+              localStorage.removeItem("tree");
             }}
             className="bg-rose-600 hover:bg-rose-700 cursor-pointer text-white font-semibold px-5 py-2 rounded-md transition duration-300"
           >

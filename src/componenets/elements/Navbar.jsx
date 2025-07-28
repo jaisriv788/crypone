@@ -5,6 +5,7 @@ import {
   Settings,
   LogOut,
   X,
+  User,
   Home,
   DollarSign,
   Users,
@@ -125,9 +126,7 @@ export default function Navbar() {
                     style={{ color: "#09182C" }}
                   />
                 </div>
-                <span className="text-xl font-bold text-white">
-                  ProjectName
-                </span>
+                <span className="text-xl font-bold text-white">EmirROI</span>
               </div>
             </div>
 
@@ -179,7 +178,7 @@ export default function Navbar() {
                         John Doe
                       </div>
                       <div className="text-sm text-gray-500">
-                        john@cryptoin.com
+                        john@emirroi.com
                       </div>
                     </div>
 
@@ -189,8 +188,8 @@ export default function Navbar() {
                       }}
                       className="flex cursor-pointer items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200"
                     >
-                      <Settings className="h-4 w-4 mr-3" />
-                      Settings
+                      <User className="h-4 w-4 mr-3" />
+                      Profile
                     </a>
 
                     <div className="border-t border-gray-100 my-1"></div>
@@ -237,7 +236,7 @@ export default function Navbar() {
               <div className="bg-white rounded-full p-2 mr-3">
                 <TrendingUp className="h-6 w-6" style={{ color: "#09182C" }} />
               </div>
-              <span className="text-xl font-bold text-white">CryptoIn</span>
+              <span className="text-xl font-bold text-white">EmirROI</span>
             </div>
             <button
               onClick={toggleDrawer}
@@ -322,7 +321,7 @@ export default function Navbar() {
 
           <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200 bg-white">
             <div className="text-center">
-              <p className="text-xs text-gray-500">© 2025 CryptoIn</p>
+              <p className="text-xs text-gray-500">© 2025 EmirROI</p>
               <p className="text-xs text-gray-400">Version 2.1.0</p>
             </div>
           </div>

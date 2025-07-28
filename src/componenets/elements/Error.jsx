@@ -10,7 +10,7 @@ export default function Error({ show, msg }) {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 300, opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          className="alert alert-error fixed  right-2 text-white bottom-2 bg-red-600 p-4 rounded-md flex items-center gap-2 shadow-lg"
+          className="alert alert-error fixed  right-2 text-white bottom-2 bg-red-600/70 p-4 rounded-md flex items-center gap-2 shadow-lg"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

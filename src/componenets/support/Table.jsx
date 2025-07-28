@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-function Table({ debounceValue }) {
+function Table({ debounceValue, showTicketModel }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ function Table({ debounceValue }) {
 
       const response = await axios.post(`${baseurl}/api/support`, { user_id });
       setData(response.data.data);
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setLoading(false);
     };
 
@@ -28,7 +28,7 @@ function Table({ debounceValue }) {
     return () => {
       controller.abort();
     };
-  }, [baseurl, user_id]);
+  }, [baseurl, user_id, showTicketModel]);
 
   const filteredData = useMemo(() => {
     if (!debounceValue) return data;
@@ -46,7 +46,7 @@ function Table({ debounceValue }) {
 
   if (loading || !data) {
     return (
-      <div className="fixed flex justify-center items-center w-full h-full bg-black/70 back top-0 left-0 z-50">
+      <div className="fixed flex justify-center items-center w-full h-full bg-black/70 backdrop-blur-sm top-0 left-0 z-50">
         <div className="loading loading-spinner text-white loading-xl"></div>
       </div>
     );
@@ -62,7 +62,7 @@ function Table({ debounceValue }) {
               <th>Subject</th>
               <th>Raised Time</th>
               <th>Status</th>
-              <th>Action</th>
+              {/* <th>Action</th> */}
             </tr>
           </thead>
           <tbody>
@@ -101,11 +101,11 @@ function Table({ debounceValue }) {
                         : "Closed"}
                     </span>
                   </td>
-                  <td className="font-semibold">
+                  {/* <td className="font-semibold">
                     <span className="bg-[#09172B] hover:bg-gray-700 transition duration-300 ease-in-out cursor-pointer text-white py-1 px-3 md:px-5 rounded">
                       View
                     </span>
-                  </td>
+                  </td> */}
                 </tr>
               ))
             )}

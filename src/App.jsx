@@ -69,8 +69,8 @@ function App() {
           path="/signup"
           element={<Signup getDetails={getDetails} toggleModel={toggleModel} />}
         />
-         <Route
-          path="/signup/:sponsorId/:position"
+        <Route
+          path="/signup/:sponsorId/:position/:disable"
           element={<Signup getDetails={getDetails} toggleModel={toggleModel} />}
         />
 

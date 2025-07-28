@@ -21,7 +21,7 @@ function Support() {
   }, [inputValue]);
 
   useEffect(() => {
-    console.log("Debounced value:", debouncedValue);
+    // console.log("Debounced value:", debouncedValue);
   }, [debouncedValue]);
 
   function handleChange(e) {
@@ -50,7 +50,7 @@ function Support() {
             placeholder="TicketId"
           />
         </div>
-        <Table debounceValue={debouncedValue} />
+        <Table showTicketModel={showTicketModel} debounceValue={debouncedValue} />
       </div>
       {showTicketModel && <Model closeModel={closeModel} />}
     </div>

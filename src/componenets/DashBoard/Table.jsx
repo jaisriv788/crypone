@@ -1,7 +1,7 @@
 function Table({ data }) {
   return (
     <div
-      className={`bg-white text-gray-800  rounded-2xl shadow-xl  border-[1px] border-gray-300 transition-transform`}
+      className={`bg-white overflow-hidden text-gray-800 rounded-2xl shadow-xl  border-[1px] border-gray-300 transition-transform`}
     >
       <div className="px-6 py-3 border-b border-gray-200 text-base font-semibold tracking-wide bg-gray-50 rounded-t-2xl">
         Latest Transaction

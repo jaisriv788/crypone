@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
-// import axios from "axios";
+import axios from "axios";
 import { useState } from "react";
 
 function Modal({ closeModel }) {
   const userid = useSelector((state) => state.auth.user.id);
+  const baseurl = useSelector((state) => state.auth.baseurl);
 
   const [ticket, setTicket] = useState({
     userid,
@@ -11,15 +12,15 @@ function Modal({ closeModel }) {
     message: "",
   });
 
-  function handleFileChange(event) {
-    const files = event.target.files;
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      console.log("File name:", file.name);
-      console.log("File type:", file.type);
-      console.log("File size:", file.size, "bytes");
-    }
-  }
+  // function handleFileChange(event) {
+  //   const files = event.target.files;
+  //   for (let i = 0; i < files.length; i++) {
+  //     const file = files[i];
+  //     console.log("File name:", file.name);
+  //     console.log("File type:", file.type);
+  //     console.log("File size:", file.size, "bytes");
+  //   }
+  // }
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -29,8 +30,20 @@ function Modal({ closeModel }) {
     }));
   }
 
-  function handleTicket() {
-    console.log(ticket);
+  async function handleTicket() {
+    const controller = new AbortController();
+
+    await axios.post(`${baseurl}/api/storeticket`, {
+      user_id: ticket.userid,
+      subject: ticket.subject,
+      message: ticket.message,
+    });
+    // console.log(response);
+    closeModel();
+
+    return () => {
+      controller.abort();
+    };
   }
 
   return (
@@ -69,20 +82,31 @@ function Modal({ closeModel }) {
               name="message"
               type="text"
               value={ticket.message}
-              onChange={handleChange}
+              onChange={(e) => {
+                if (e.target.value.length <= 200) handleChange(e);
+              }}
               placeholder="Message "
               className="focus:outline-none border-1 border-[#09182C] rounded w-full px-3 py-1"
             />
-            <p className="text-sm">Message should be max 200 characters</p>
+            <div className="flex justify-between">
+              <p className="text-sm">Message should be max 200 characters</p>
+              <p
+                className={`text-sm ${
+                  200 - ticket.message.length == 0 && "text-red-500"
+                }`}
+              >
+                characters left : {200 - ticket.message.length}
+              </p>
+            </div>
           </div>
-          <div className="flex">
+          {/* <div className="flex">
             <input
               type="file"
               multiple
               onChange={handleFileChange}
               className="file-input file-input-neutral w-full"
             />
-          </div>
+          </div> */}
 
           <div className="flex gap-10 justify-between mt-3 text-white">
             <button

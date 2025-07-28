@@ -14,7 +14,7 @@ function MileBonus() {
   }, [inputValue]);
 
   useEffect(() => {
-    console.log("Debounced value:", debouncedValue);
+    // console.log("Debounced value:", debouncedValue);
   }, [debouncedValue]);
 
   function handleChange(e) {
