@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/rpro/user/:path*",
+      "destination": "/:path*"
+    }
+  ]
+}
